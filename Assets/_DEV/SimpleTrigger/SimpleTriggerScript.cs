@@ -3,17 +3,14 @@ using UnityEngine.Events;
 
 public class SimpleTriggerScript : MonoBehaviour
 {
-    // Deze events kun je in de Inspector vullen
     public UnityEvent OnTriggerEnterEvent;
     public UnityEvent OnTriggerExitEvent;
 
     private void OnTriggerEnter(Collider other)
     {
-        // Check of het object een CharacterController heeft (VR rig)
         if (other.gameObject.GetComponent<CharacterController>())
         {
-            Debug.Log("Speler is door de kubus gelopen!");
-            // Trigger het UnityEvent
+            Debug.Log("Player entered the trigger.");
             OnTriggerEnterEvent?.Invoke();
         }
     }
@@ -22,7 +19,7 @@ public class SimpleTriggerScript : MonoBehaviour
     {
         if (other.gameObject.GetComponent<CharacterController>())
         {
-            Debug.Log("Speler verlaat de kubus.");
+            Debug.Log("Player left the trigger.");
             OnTriggerExitEvent?.Invoke();
         }
     }
